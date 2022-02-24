@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./Styles/product.css" />
+ 
+    <title>Document</title>
+</head>
+<body>
+   <div id="container">
+    <div id="filter">
+        <h5>Filter By</h5>
+        <hr>
+        <div class="multipleSelection">
+            <div class="selectBox" 
+                onclick="showproduct()">
+                <div id="cat">
+                    <p>CATEGORY</p>
+                    <img id="downarrow" src="https://www.citypng.com/public/uploads/preview/dark-gray-down-head-arrow-11581594305zjibgsalxd.png"/>
+                </div>
+                
+             </div>
+         <div id="productlist">
+            <label for="first">
+                <input type="checkbox" id="first" /> 
+                Regimens(24)
+            </label>
+              
+            <label for="second">
+                <input type="checkbox" id="second" />
+                Face Serums(15)
+            </label>
+            <label for="third">
+                <input type="checkbox" id="third" />
+                Eyes(14)
+            </label>
+            <label for="fourth">
+                <input type="checkbox" id="fourth" />
+                Face Masks(5)
+            </label>
+            <label for="five">
+                <input type="checkbox" id="five" />
+                Hand & Body(5)
+            </label>
+              
+            <label for="six">
+                <input type="checkbox" id="six" />
+                Sun Protection(9)
+            </label>
+            <label for="seven">
+                <input type="checkbox" id="seven" />
+                Pro Skincare Tools(11)
+            </label>
+            <label for="eigth">
+                <input type="checkbox" id="eight" />
+                Accessories(9)
+            </label>
+            <label for="nine">
+                <input type="checkbox" id="nine" />
+                Special Offers(18)
+            </label>
+         </div>
+        </div>
+            <hr>
+            <div class="multipleSelection">
+                <div class="selectBox" 
+                    onclick="skinconcern()">
+                    <div id="cat">
+                        <p>SKIN CONCERN</p>
+                        <img id="downarrow" src="https://www.citypng.com/public/uploads/preview/dark-gray-down-head-arrow-11581594305zjibgsalxd.png"/>
+                    </div>
+                 </div>
+    
+            <div id="skinlist">
+                <label for="first">
+                    <input type="checkbox" id="first" />
+                    Fine Lines & Wrinkles (24)
+                    </label>
+                
+                <label for="second">
+                    <input type="checkbox" id="second" />
+                    Lifting & Firming (20)
+                </label>
+
+                <label for="third">
+                    <input type="checkbox" id="third" />
+                    Dull & Tired Skin (8)
+                </label>
+
+                <label for="fourth">
+                    <input type="checkbox" id="fourth" />
+                    Acne & Breakouts (13)
+                </label>
+
+                <label for="five">
+                    <input type="checkbox" id="five" />
+                Uneven Tone & Dark Marks (12)
+                </label>
+                
+                <label for="six">
+                    <input type="checkbox" id="six" />
+                    Sensitivity & Visible Redness (8)
+                </label>
+
+                <label for="seven">
+                    <input type="checkbox" id="seven" />
+                    Pores & Blackheads (11)
+                </label>
+
+                <label for="eigth">
+                    <input type="checkbox" id="eight" />
+                Dry Skin (7)
+                </label>
+        
+            
+            </div>
+        </div>
+        <hr>
+        
+        <div class="multipleSelection">
+            <div class="selectBox" 
+                onclick="applicationarea()">
+                <div id="cat">
+                    <p>APPLICATION AREA</p>
+                    <img id="downarrow" src="https://www.citypng.com/public/uploads/preview/dark-gray-down-head-arrow-11581594305zjibgsalxd.png"/>
+                </div>
+                <!-- <div class="overSelect"></div> -->
+            </div>
+  
+          <div id="applicationarea">
+            <label for="first">
+                <input type="checkbox" id="first" />
+                  Face (17)
+            </label>
+             <label for="second">
+                <input type="checkbox" id="second" />
+                Eyes (2)
+            </label>
+             <label for="third">
+                <input type="checkbox" id="third" />
+                Lips (1)
+            </label>
+            </div>
+        </div>
+            <hr>
+            <div class="multipleSelection">
+                <div class="selectBox" 
+                    onclick="productline()">
+                    <div id="cat">
+                        <p>PRODUCT LINE</p>
+                        <img id="downarrow" src="https://www.citypng.com/public/uploads/preview/dark-gray-down-head-arrow-11581594305zjibgsalxd.png"/>
+                        
+                    </div>
+                   
+                </div>
+      
+             <div id="productlinelist">
+                <label for="first">
+                    <input type="checkbox" id="first" />
+                    Redefine (20)
+                     </label>
+                  
+                <label for="second">
+                    <input type="checkbox" id="second" />
+                    Enhancements (2)
+                </label>
+    
+     </div>
+    </div>
+ </div>
+  
+ <div id="productarray"></div>
+</div>
+</body>
+</html>
+<script src="./script/product.js"></script>
+<script src="./data/products.js"></script>>
+<script>
+    
+
+    var prodArr=JSON.parse(localStorage.getItem("allProducts"))
+    console.log(prodArr)
+   
+prodArr.map(function(elem){
+    var mainDiv=document.createElement("div");
+    var childDiv=document.createElement("div");
+    var rewDiv=document.createElement("div");
+    //img section
+    var image=document.createElement("img")
+    image.setAttribute("src",elem.img)
+    //discription
+    var name=document.createElement("p")
+    name.innerText=elem.name;
+    name.id="elemname"
+    var price=document.createElement("p")
+    price.innerText=(elem.price);
+    
+    var title=document.createElement("p")
+    title.innerText=elem.title;
+    title.id="elemtitle"
+    var disc=document.createElement("p")
+    disc.innerText=elem.disc;
+    disc.id="elemdisc"
+
+    var qty=document.createElement("p")
+    qty.innerText=elem.qty;
+    qty.id="elemqty"
+
+  //star section
+    var star=document.createElement("p")
+    star.innerText=elem.star;
+    star.id="elemstar"
+
+    var review=document.createElement("p")
+    review.innerText=elem.review;
+    review.id="elemreview"
+
+    var pearks=document.createElement("p")
+    pearks.innerText=elem.pearks;
+    pearks.id="elemrpearks"
+
+    var pvalue=document.createElement("p")
+    pvalue.innerText=elem.pvalue;
+    pvalue.id="elempvalue"
+
+
+
+     rewDiv.append(star,review)
+     rewDiv.id="rewDiv"
+    childDiv.append(title,name,disc,price,qty)
+    childDiv.id="childdiv"
+    
+   var button=document.createElement("button")
+   button.innerText="ADD TO BAG";
+   button.id="ADDTOBAG"
+    mainDiv.append(image,childDiv,rewDiv,button)
+    mainDiv.id="mainDiv"
+    document.querySelector("#productarray").append(mainDiv)
+})
+    
+</script>
