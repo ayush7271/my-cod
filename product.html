@@ -182,6 +182,7 @@
 
     var prodArr=JSON.parse(localStorage.getItem("allProducts"))
     console.log(prodArr)
+    var cartArr=JSON.parse(localStorage.getItem("cartList"))||[]
    
 prodArr.map(function(elem){
     var mainDiv=document.createElement("div");
@@ -235,6 +236,17 @@ prodArr.map(function(elem){
    var button=document.createElement("button")
    button.innerText="ADD TO BAG";
    button.id="ADDTOBAG"
+   button.addEventListener("click",function(){
+       addtocart(elem)
+   })
+   function addtocart(elem){
+       console.log(elem)
+       cartArr.push(elem)
+       console.log(cartArr)
+       localStorage.setItem("cartList",JSON.stringify(cartArr))
+   }
+   
+   //maindiv
     mainDiv.append(image,childDiv,rewDiv,button)
     mainDiv.id="mainDiv"
     document.querySelector("#productarray").append(mainDiv)
